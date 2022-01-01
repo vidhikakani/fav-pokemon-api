@@ -1,3 +1,4 @@
+import os
 from fastapi import HTTPException, Depends
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
@@ -10,7 +11,7 @@ from database import database
 from models import models
 from schemas import user_schema, favorite_schema
 
-JWT_SECRET = "edvorafullstackassessmentsecretjwtkey"
+JWT_SECRET = os.environ.get("SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
