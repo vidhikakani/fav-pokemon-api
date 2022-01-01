@@ -2,6 +2,7 @@ import fastapi
 from fastapi.middleware.cors import CORSMiddleware
 
 import routers
+from services import services
 
 origins = [
     "http://localhost:3000",
@@ -17,5 +18,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+services.create_database()
 
 app.include_router(routers.router, prefix="/api", tags=['users'])
